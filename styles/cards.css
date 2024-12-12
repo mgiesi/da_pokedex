@@ -1,0 +1,12 @@
+.card-types {
+    min-height: 56px;
+}
+
+.card-img-hoover {
+    transition: all 300ms;
+    cursor: pointer;
+}
+
+.card-img-hoover:hover {
+    transform: scale(1.1);
+}

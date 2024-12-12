@@ -1,0 +1,110 @@
+:root {
+    --type-normal: rgb(160, 161, 159);
+    --type-fire: rgb(222, 38, 38);
+    --type-fighting: rgb(250, 129, 0);
+    --type-water: rgb(57, 129, 237);
+    --type-flying: rgb(57, 129, 237);
+    --type-grass: rgb(75, 161, 43);
+    --type-poison: rgb(143, 66, 201);
+    --type-electric: rgb(245, 189, 7);
+    --type-ground: rgb(140, 81, 32);
+    --type-psychic: rgb(232, 65, 121);
+    --type-rock: rgb(173, 168, 128);
+    --type-ice: rgb(173, 168, 128);
+    --type-bug: rgb(145, 161, 27);
+    --type-dragon: rgb(83, 97, 224);
+    --type-ghost: rgb(110, 65, 112);
+    --type-dark: rgb(97, 77, 78);
+    --type-steel: rgb(103, 161, 184);
+    --type-fairy: rgb(233, 111, 237);
+    --type-stellar: rgb(80, 181, 164);
+    --type-none: rgb(109, 161, 144);
+
+    --gradient-color2: rgb(33, 37, 41);
+}
+
+.type {
+    padding: 4px;
+    margin: 12px;
+    border-radius: 4px;
+}
+
+.type-normal {
+    background-color: rgb(160, 161, 159);
+}
+
+.type-fire {
+    background-color: rgb(222, 38, 38);
+}
+
+.type-fighting {
+    background-color: rgb(250, 129, 0);
+}
+
+.type-water {
+    background-color: rgb(57, 129, 237);
+}
+
+.type-flying {
+    background-color: rgb(57, 129, 237);
+}
+
+.type-grass {
+    background-color: rgb(75, 161, 43);
+}
+
+.type-poison {
+    background-color: rgb(143, 66, 201);
+}
+
+.type-electric {
+    background-color: rgb(245, 189, 7);
+}
+
+.type-ground {
+    background-color: rgb(140, 81, 32);
+}
+
+.type-psychic {
+    background-color: rgb(232, 65, 121);
+}
+
+.type-rock {
+    background-color: rgb(173, 168, 128);
+}
+
+.type-ice {
+    background-color: rgb(173, 168, 128);
+}
+
+.type-bug {
+    background-color: rgb(145, 161, 27);
+}
+
+.type-dragon {
+    background-color: rgb(83, 97, 224);
+}
+
+.type-ghost {
+    background-color: rgb(110, 65, 112);
+}
+
+.type-dark {
+    background-color: rgb(97, 77, 78);
+}
+
+.type-steel {
+    background-color: rgb(103, 161, 184);
+}
+
+.type-fairy {
+    background-color: rgb(233, 111, 237);
+}
+
+.type-stellar {
+    background-color: rgb(80, 181, 164);
+}
+
+.type-none {
+    background-color: rgb(109, 161, 144);
+}
