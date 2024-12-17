@@ -13,6 +13,15 @@ function setAlbumFilter() {
     loadAlbum();
 }
 
+function resetAlbumFilter() {
+    const albumContentRef = document.getElementById("album-container");
+    albumContentRef.innerHTML = "";
+    filter = "";
+    offset = 0;
+
+    loadAlbum();
+}
+
 async function loadAlbum() {
     if (filter !== undefined &&
         filter !== null &&

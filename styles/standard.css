@@ -11,3 +11,11 @@ main {
     margin-left: -1px;
     margin-right: -1px;
 }
+
+#errorHint {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    font-size: 0.875rem;
+}
