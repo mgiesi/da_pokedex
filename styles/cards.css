@@ -10,3 +10,12 @@
 .card-img-hoover:hover {
     transform: scale(1.1);
 }
+
+.card-img-general {
+    width: 24px;
+    height: 24px;
+}
+
+.tab-content {
+    min-height: 200px;
+}

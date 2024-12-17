@@ -30,7 +30,7 @@ async function loadAlbumFull() {
     let pokemonList = await requestPokemonList(LIMIT);
     maxResults = pokemonList.count;
     for (const pokemonObj of pokemonList.results) {
-        let pokemon = await requestPokemon(pokemonObj.url);
+        let pokemon = await requestPokemonData(pokemonObj.url);
         albumContentRef.innerHTML += getAlbumCard(pokemon);
     }
 
@@ -49,7 +49,7 @@ async function loadAlbumFiltered() {
             continue;
         }
 
-        let pokemon = await requestPokemon(pokemonObj.url);
+        let pokemon = await requestPokemonData(pokemonObj.url);
         albumContentRef.innerHTML += getAlbumCard(pokemon);
     }
 }
@@ -60,10 +60,12 @@ function renderCounter() {
 }
 
 async function showPokemonDetails(id) {
-    let pokemon = await requestPokemon(BASE_URL + "/pokemon/" + id);
+    let pokemon = await requestPokemonData(BASE_URL + "/pokemon/" + id);
+    let pokomonSpecies = await requestPokemonData(pokemon.species.url);
+    let pokemonEvolution = await requestPokemonData(pokomonSpecies.evolution_chain.url);
 
     const modalContent = document.getElementById("album-modal-content");
-    modalContent.innerHTML = getPokemonDetails(pokemon);
+    modalContent.innerHTML = getPokemonDetails(pokemon, pokemonEvolution);
 }
 
 async function requestPokemonList(limit) {
@@ -71,7 +73,7 @@ async function requestPokemonList(limit) {
     return responseToJson = await response.json();
 }
 
-async function requestPokemon(url) {
+async function requestPokemonData(url) {
     let response = await fetch(url);
     return responseToJson = await response.json();
 }

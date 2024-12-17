@@ -6,3 +6,8 @@ main {
 .cp {
     cursor: pointer;
 }
+
+.mx--1 {
+    margin-left: -1px;
+    margin-right: -1px;
+}
