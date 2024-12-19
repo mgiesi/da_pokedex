@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+
+    <link rel="shortcut icon" href="./assets/icons/favicon.ico" type="image/x-icon">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="./script.js"></script>
+    <script src="./scripts/templates.js"></script>
+    <script src="./scripts/album.js"></script>
+    <script src="./scripts/search.js"></script>
+
+    <link rel="stylesheet" href="./styles/standard.css">
+    <link rel="stylesheet" href="./styles/cards.css">
+    <link rel="stylesheet" href="./styles/types.css">
+
+</head>
+
+<body onload="init()" class="d-flex flex-column h-100">
+
+    <img src="./assets/img/background.png" class="bg-image" alt="">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a href="."><img src="./assets/img/logo.png" class="navbar-logo" alt="Logo"></a>
+                <a class="navbar-brand" href=".">Pokedex</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav me-auto mb-2 mb-md-0">
+
+                    </div>
+                    <form class="needs-validation position-relative" role="search" novalidate>
+                        <input id="album-search" class="form-control form-text me-2" type="search" placeholder="Search"
+                            aria-label="Search" style="width: 200px;" autocomplete="off">
+                        <div id="errorHint" class="form-text text-danger bg-dark" style="display: none;">
+                            At least 3 characters required!
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="modal fade" id="pokemonModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" id="album-modal-content">
+
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class='m-4'>
+            <h1>Impressum</h1>
+            <p>Angaben gemäß § 5 DDG</p>
+            <p>Pokedex <br>
+                Bahnhofstrasse 123<br>
+                6900 Bregenz <br>
+            </p>
+            <p> <strong>Vertreten durch: </strong><br>
+                Markus Giesinger<br>
+            </p>
+            <p><strong>Kontakt:</strong> <br>
+                Telefon: +43 (0)5574 - 122 133 144 11<br>
+                Fax: +43 (0)5574 - 122 133 144 09<br>
+                E-Mail: <a href='mailto:office@pokedex.com'>office@pokedex.com</a></br></p>
+            <p><strong>Umsatzsteuer-ID: </strong> <br>
+                Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz: AT8463345<br><br>
+            </p>
+            <p><strong>Aufsichtsbehörde:</strong><br>
+                Musteraufsicht Musterstadt<br></p>
+            <p><strong>Haftungsausschluss: </strong><br><br><strong>Haftung für Inhalte</strong><br><br>
+                Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit
+                und
+                Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7
+                Abs.1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8
+                bis
+                10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
+                Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit
+                hinweisen.
+                Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen
+                bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis
+                einer
+                konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir
+                diese
+                Inhalte umgehend entfernen.<br><br><strong>Haftung für Links</strong><br><br>
+                Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben.
+                Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der
+                verlinkten
+                Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten
+                wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren
+                zum
+                Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten
+                ist
+                jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von
+                Rechtsverletzungen werden wir derartige Links umgehend
+                entfernen.<br><br><strong>Urheberrecht</strong><br><br>
+                Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
+                Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
+                Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+                Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+                Soweit
+                die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter
+                beachtet.
+                Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine
+                Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden
+                von
+                Rechtsverletzungen werden wir derartige Inhalte umgehend
+                entfernen.<br><br><strong>Datenschutz</strong><br><br>
+                Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf
+                unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben
+                werden,
+                erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche
+                Zustimmung nicht an Dritte weitergegeben. <br>
+                Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail)
+                Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist
+                nicht
+                möglich. <br>
+                Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur
+                Übersendung
+                von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich
+                widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der
+                unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.<br>
+            </p><br>
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-body-tertiary">
+        <div class="container d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex justify-content-center align-items-center">
+                <a href="./dataprivacy.html" class="text-body-secondary m-2">Datenschutzerklärung</a>
+                <a href="./impressum.html" class="text-body-secondary m-2">Impressum</a>
+            </div>
+            <span class="text-body-secondary">© 2024 Pokedex</span>
+
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

@@ -218,8 +218,8 @@ function getPokemonDetailsEvolution(pokemon, pokemonEvolution) {
 
     return `
         <div class="container-fluid">
-            <div class="row">
-                <div class="d-flex justify-content-between align-items-center">
+            <div class="row justify-content-center align-items-center">
+                <div class="d-flex align-items-center">
                     ${evolutionEntries}
                 </div>
             </div>
