@@ -45,11 +45,11 @@ function setAlbumFooterVisible(visible) {
     const loadNextRef = document.getElementById("album-load-elements");
 
     if (visible) {
-        cardCountRef.classList.remove("hidden");
-        loadNextRef.classList.remove("hidden");
+        cardCountRef.classList.remove("d-none");
+        loadNextRef.classList.remove("d-none");
     } else {
-        cardCountRef.classList.add("hidden");
-        loadNextRef.classList.add("hidden");
+        cardCountRef.classList.add("d-none");
+        loadNextRef.classList.add("d-none");
     }
 }
 
@@ -71,7 +71,7 @@ async function loadAlbumFull() {
     let pokemonList = await requestPokemonList(LIMIT);
     albumConfig.maxResults = pokemonList.count;
     for (const pokemonObj of pokemonList.results) {
-        addPokemonCard(pokemonObj);
+        await addPokemonCard(pokemonObj);
     }
 
     albumConfig.offset += LIMIT;
@@ -85,7 +85,7 @@ async function loadAlbumFiltered() {
     albumConfig.maxResults = pokemonList.count;
     for (const pokemonObj of pokemonList.results) {
         if (pokemonObj.name.includes(albumConfig.filter)) {
-            addPokemonCard(pokemonObj);
+            await addPokemonCard(pokemonObj);
         }
     }
 }
@@ -100,9 +100,9 @@ async function addPokemonCard(pokemonObj) {
 function setSpinnerVisible(visible) {
     const spinnerRef = document.getElementById("spinner-album");
     if (visible) {
-        spinnerRef.classList.remove("hidden");
+        spinnerRef.classList.remove("d-none");
     } else {
-        spinnerRef.classList.add("hidden");
+        spinnerRef.classList.add("d-none");
     }
 }
 

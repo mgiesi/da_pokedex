@@ -8,15 +8,15 @@ async function showPokemonDetails(id) {
     let pokemonEvolution = await requestPokemonData(pokomonSpecies.evolution_chain.url);
     modalContent.innerHTML = getPokemonDetails(pokemon, pokemonEvolution);
 
-    updatePrevNextUI(pokemon['id']);
+    await updatePrevNextUI(pokemon['id']);
 }
 
 /** Loads the previous available pokemon */
 async function loadPrev(pokemonId) {
     let idx = albumConfig.ids.indexOf(pokemonId);
     if (idx > 0) {
-        showPokemonDetails(albumConfig.ids[idx - 1]);
-        updatePrevNextUI(albumConfig.ids[idx - 1])
+        await showPokemonDetails(albumConfig.ids[idx - 1]);
+        await updatePrevNextUI(albumConfig.ids[idx - 1])
     }
 }
 
@@ -24,24 +24,24 @@ async function loadPrev(pokemonId) {
 async function loadNext(pokemonId) {
     let idx = albumConfig.ids.indexOf(pokemonId);
     if (idx < albumConfig.ids.length - 1) {
-        showPokemonDetails(albumConfig.ids[idx + 1]);
-        updatePrevNextUI(albumConfig.ids[idx - 1])
+        await showPokemonDetails(albumConfig.ids[idx + 1]);
+        await updatePrevNextUI(albumConfig.ids[idx - 1])
     }
 }
 
 /** Sets the visibility for the next/prev buttons in the details dialog. */
-function updatePrevNextUI(pokemonId) {
+async function updatePrevNextUI(pokemonId) {
     const loadPrevRef = document.getElementById("card-load-prev");
     const loadNextRef = document.getElementById("card-load-next");
     let idx = albumConfig.ids.indexOf(pokemonId);
     if (idx < albumConfig.ids.length - 1) {
-        loadNextRef.classList.remove("hidden");
+        loadNextRef.classList.remove("d-none");
     } else {
-        loadNextRef.classList.add("hidden");
+        loadNextRef.classList.add("d-none");
     }
     if (idx > 0) {
-        loadPrevRef.classList.remove("hidden");
+        loadPrevRef.classList.remove("d-none");
     } else {
-        loadPrevRef.classList.add("hidden");
+        loadPrevRef.classList.add("d-none");
     }
 }

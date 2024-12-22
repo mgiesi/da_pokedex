@@ -32,7 +32,7 @@
     <img src="./assets/img/background.png" class="bg-image" alt="">
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <div class="container-fluid">
+            <div class="container">
                 <a href="."><img src="./assets/img/logo.png" class="navbar-logo" alt="Logo"></a>
                 <a class="navbar-brand" href=".">Pokedex</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -44,7 +44,7 @@
 
                     </div>
                     <form class="needs-validation position-relative" role="search" novalidate>
-                        <input id="album-search" class="form-control form-text me-2" type="search" placeholder="Search"
+                        <input id="album-search" class="form-control form-text" type="search" placeholder="Search"
                             aria-label="Search" style="width: 200px;" autocomplete="off">
                         <div id="errorHint" class="form-text text-danger bg-dark" style="display: none;">
                             At least 3 characters required!
@@ -55,7 +55,7 @@
         </nav>
     </header>
 
-    <div class="modal fade" id="pokemonModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="pokemonModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" id="album-modal-content">
             </div>
@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <div id="spinner-album" class="d-flex justify-content-center align-items-center hidden">
+        <div id="spinner-album" class="d-flex justify-content-center align-items-center d-none">
             <img src="./assets/icons/spinner.svg" class="spinner" alt="Spinner">
         </div>
 
@@ -78,16 +78,16 @@
             <span id="album-elements-count">12 of 1200 Pokémon</span>
         </div>
         <div class="d-flex justify-content-center">
-            <button onclick="loadAlbum(true)" class="btn btn-outline-success" id="album-load-elements"
-                type="button">Load more Pokémon</button>
+            <button onclick="loadAlbum()" class="btn btn-outline-success" id="album-load-elements" type="button">Load
+                more Pokémon</button>
         </div>
     </main>
 
     <footer class="footer mt-auto py-3 bg-body-tertiary">
         <div class="container d-flex flex-column justify-content-center align-items-center">
             <div class="d-flex justify-content-center align-items-center">
-                <a href="./dataprivacy.html" class="text-body-secondary m-2">Datenschutzerklärung</a>
-                <a href="./impressum.html" class="text-body-secondary m-2">Impressum</a>
+                <a href="./dataprivacy.html" class="text-body-secondary m-2">Privacy Policy</a>
+                <a href="./impressum.html" class="text-body-secondary m-2">Imprint</a>
             </div>
             <span class="text-body-secondary">© 2024 Pokedex</span>
         </div>
