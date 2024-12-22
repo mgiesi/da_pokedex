@@ -1,3 +1,7 @@
+/**
+ * Initialization function for the album.
+ * Will be called when loading the hole web page.
+ */
 function init() {
     loadAlbum();
     initSearchEngine();

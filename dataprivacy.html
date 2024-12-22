@@ -26,30 +26,14 @@
 
 </head>
 
-<body onload="init()" class="d-flex flex-column h-100">
+<body onload="" class="d-flex flex-column h-100">
 
     <img src="./assets/img/background.png" class="bg-image" alt="">
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <div class="container-fluid">
+            <div class="container-fluid justify-content-start">
                 <a href="."><img src="./assets/img/logo.png" class="navbar-logo" alt="Logo"></a>
                 <a class="navbar-brand" href=".">Pokedex</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav me-auto mb-2 mb-md-0">
-
-                    </div>
-                    <form class="needs-validation position-relative" role="search" novalidate>
-                        <input id="album-search" class="form-control form-text me-2" type="search" placeholder="Search"
-                            aria-label="Search" style="width: 200px;" autocomplete="off">
-                        <div id="errorHint" class="form-text text-danger bg-dark" style="display: none;">
-                            At least 3 characters required!
-                        </div>
-                    </form>
-                </div>
             </div>
         </nav>
     </header>
@@ -57,7 +41,6 @@
     <div class="modal fade" id="pokemonModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" id="album-modal-content">
-
             </div>
         </div>
     </div>
@@ -108,10 +91,7 @@
                 <a href="./impressum.html" class="text-body-secondary m-2">Impressum</a>
             </div>
             <span class="text-body-secondary">© 2024 Pokedex</span>
-
-
         </div>
-
     </footer>
 
 </body>

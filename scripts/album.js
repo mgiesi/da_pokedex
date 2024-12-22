@@ -1,84 +1,118 @@
+/** Base URL needed for the pokemon API */
 const BASE_URL = "https://pokeapi.co/api/v2/";
-
+/** Number of pokemon cards to load at once */
 const LIMIT = 20;
 
-let maxResults = 0;
-let offset = 0;
-let filter;
+/** Configuration object for the album. Contains filter settings and list of loaded pokemon-ids */
+let albumConfig = {
+    "maxResults": 0,
+    "offset": 0,
+    "filter": null,
+    "ids": [],
 
+    filterActive() {
+        return this.filter !== undefined &&
+            this.filter !== null &&
+            this.filter.length > 2;
+    }
+};
+
+/** Function to update filter-settings. Reads the filter-text from the UI element and loads the album. */
 function setAlbumFilter() {
     const searchRef = document.getElementById("album-search");
-    filter = searchRef.value;
-
+    albumConfig.filter = searchRef.value;
+    setAlbumFooterVisible(false);
     loadAlbum();
+}
+
+function resetAlbumContent(resetFilter) {
+    const albumContentRef = document.getElementById("album-container");
+    albumContentRef.innerHTML = "";
+    albumConfig.offset = 0;
+    if (resetFilter) {
+        albumConfig.filter = "";
+    }
 }
 
 function resetAlbumFilter() {
-    const albumContentRef = document.getElementById("album-container");
-    albumContentRef.innerHTML = "";
-    filter = "";
-    offset = 0;
-
+    resetAlbumContent(true);
+    setAlbumFooterVisible(true);
     loadAlbum();
 }
 
+function setAlbumFooterVisible(visible) {
+    const cardCountRef = document.getElementById("album-elements-count");
+    const loadNextRef = document.getElementById("album-load-elements");
+
+    if (visible) {
+        cardCountRef.classList.remove("hidden");
+        loadNextRef.classList.remove("hidden");
+    } else {
+        cardCountRef.classList.add("hidden");
+        loadNextRef.classList.add("hidden");
+    }
+}
+
+/** Global function to refresh the album. */
 async function loadAlbum() {
-    if (filter !== undefined &&
-        filter !== null &&
-        filter.length > 2) {
+    setSpinnerVisible(true);
+    if (albumConfig.filterActive()) {
         await loadAlbumFiltered();
     } else {
         await loadAlbumFull();
     }
 
     renderCounter();
+    setSpinnerVisible(false);
 }
 
+/** Internal function to load the full album ignoring any filter settings. */
 async function loadAlbumFull() {
-    const albumContentRef = document.getElementById("album-container");
     let pokemonList = await requestPokemonList(LIMIT);
-    maxResults = pokemonList.count;
+    albumConfig.maxResults = pokemonList.count;
     for (const pokemonObj of pokemonList.results) {
-        let pokemon = await requestPokemonData(pokemonObj.url);
-        albumContentRef.innerHTML += getAlbumCard(pokemon);
+        addPokemonCard(pokemonObj);
     }
 
-    offset += LIMIT;
+    albumConfig.offset += LIMIT;
 }
 
+/** Internal function to load filtered list of album */
 async function loadAlbumFiltered() {
-    const albumContentRef = document.getElementById("album-container");
-    albumContentRef.innerHTML = "";
-    offset = 0;
+    resetAlbumContent(false);
 
     let pokemonList = await requestPokemonList(10000);
-    maxResults = pokemonList.count;
+    albumConfig.maxResults = pokemonList.count;
     for (const pokemonObj of pokemonList.results) {
-        if (pokemonObj.name.includes(filter) === false) {
-            continue;
+        if (pokemonObj.name.includes(albumConfig.filter)) {
+            addPokemonCard(pokemonObj);
         }
+    }
+}
 
-        let pokemon = await requestPokemonData(pokemonObj.url);
-        albumContentRef.innerHTML += getAlbumCard(pokemon);
+async function addPokemonCard(pokemonObj) {
+    const albumContentRef = document.getElementById("album-container");
+    let pokemon = await requestPokemonData(pokemonObj.url);
+    albumContentRef.innerHTML += getAlbumCard(pokemon);
+    albumConfig.ids.push(pokemon.id);
+}
+
+function setSpinnerVisible(visible) {
+    const spinnerRef = document.getElementById("spinner-album");
+    if (visible) {
+        spinnerRef.classList.remove("hidden");
+    } else {
+        spinnerRef.classList.add("hidden");
     }
 }
 
 function renderCounter() {
     const counterTextRef = document.getElementById("album-elements-count");
-    counterTextRef.innerHTML = offset + " of " + maxResults + " Pokémon";
-}
-
-async function showPokemonDetails(id) {
-    let pokemon = await requestPokemonData(BASE_URL + "/pokemon/" + id);
-    let pokomonSpecies = await requestPokemonData(pokemon.species.url);
-    let pokemonEvolution = await requestPokemonData(pokomonSpecies.evolution_chain.url);
-
-    const modalContent = document.getElementById("album-modal-content");
-    modalContent.innerHTML = getPokemonDetails(pokemon, pokemonEvolution);
+    counterTextRef.innerHTML = albumConfig.offset + " of " + albumConfig.maxResults + " Pokémon";
 }
 
 async function requestPokemonList(limit) {
-    let response = await fetch(BASE_URL + "pokemon?limit=" + limit + "&offset=" + offset);
+    let response = await fetch(BASE_URL + "pokemon?limit=" + limit + "&offset=" + albumConfig.offset);
     return responseToJson = await response.json();
 }
 

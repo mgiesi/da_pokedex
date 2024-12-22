@@ -1,3 +1,7 @@
+:root {
+    --evolution-width: 96px;
+}
+
 .card-types {
     min-height: 56px;
 }
@@ -18,4 +22,10 @@
 
 .tab-content {
     min-height: 200px;
+}
+
+@media(max-width: 400px) {
+    :root {
+        --evolution-width: 64px;
+    }
 }
