@@ -16,7 +16,6 @@ async function loadPrev(pokemonId) {
     let idx = albumConfig.ids.indexOf(pokemonId);
     if (idx > 0) {
         await showPokemonDetails(albumConfig.ids[idx - 1]);
-        await updatePrevNextUI(albumConfig.ids[idx - 1])
     }
 }
 
@@ -25,7 +24,6 @@ async function loadNext(pokemonId) {
     let idx = albumConfig.ids.indexOf(pokemonId);
     if (idx < albumConfig.ids.length - 1) {
         await showPokemonDetails(albumConfig.ids[idx + 1]);
-        await updatePrevNextUI(albumConfig.ids[idx - 1])
     }
 }
 
